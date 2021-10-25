@@ -1,0 +1,29 @@
+<template>
+  <div class="totals-container">
+    <div class="totals-header">
+      <span>Cart Totals</span>
+    </div>
+    <div class="totals-tons">
+      <span class="slds-text-heading_medium">
+        Total Tons
+      </span>
+      <span class="slds-text-align_right slds-text-heading_large">
+        <lightning-formatted-number value={cartTotalTons} format-style="decimal" minimum-integer-digits="1" minimum-fraction-digits="1" maximum-fraction-digits="4"></lightning-formatted-number>
+      </span>
+    </div>
+    <div if:true={showMinWeightMessage} class="minimum-tons">
+      <strong><em>*Minimum 3 tons required for delivery. To add more items go "Home".</em></strong>
+    </div>
+    <div class="totals-amount">
+      <span class="slds-text-heading_medium">
+        Total Amount
+      </span>
+      <span class="slds-text-align_right slds-text-heading_large">
+        <lightning-formatted-number value={cartTotal} format-style="currency"></lightning-formatted-number>
+      </span>
+    </div>
+    <div class="totals-note">
+      <strong><em>* Freight will be calculated on Invoice.</em></strong>
+    </div>
+  </div>
+</template>

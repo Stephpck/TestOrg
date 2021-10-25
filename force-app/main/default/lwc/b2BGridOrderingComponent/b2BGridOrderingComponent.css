@@ -1,0 +1,79 @@
+.layout-container {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.main-section {
+  flex: 1 0 80%;
+  --sds-c-accordion-summary-color-background: rgb(158, 220, 243);
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.product-quantity {
+  max-width: 75px;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 0 -12px;
+  width: calc(100% + 24px);
+}
+
+tr {
+  border: 1px solid #ddd;
+}
+
+thead tr {
+  border-bottom-color: black;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #ddd;
+}
+
+th, td {
+  padding: 8px 1vw;
+}
+
+.add-to-cart-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 24px 0;
+}
+
+.success-message {
+  color: green;
+  margin-right: 16px;
+}
+
+.error-message {
+  color: red;
+  margin-right: 16px;
+}
+
+/* 
+  small form factor 
+  SLDS media query reference: https://www.lightningdesignsystem.com/design-tokens/#category-media-query
+*/
+@media only screen and (max-width: 47.9375em) {
+  .layout-container {
+      flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .orderRequirements,
+  .percentProtein,
+  .palletPrice {
+    display: none;
+  }
+}

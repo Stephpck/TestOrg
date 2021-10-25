@@ -1,0 +1,60 @@
+<template>
+<header class="slds-m-bottom_medium">
+    <span class="slds-truncate slds-text-heading_large">Quick Order</span>
+</header>
+<article class="slds-border_top slds-p-top_large layout-container">
+    <lightning-spinner if:true={isLoading} class="slds-is-absolute slds-align_absolute-center"
+        alternative-text="Loading products..." size="medium" variant="brand">
+    </lightning-spinner>
+    <section class="main-section">
+        <lightning-accordion allow-multiple-sections-open active-section-name={activeSections}>
+            <template for:each={productsByCategory} for:item="category">
+                <lightning-accordion-section key={category.categoryName} name={category.categoryName} label={category.categoryName} class="slds-border_bottom" role="option">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Product</th>   
+                                <th class="align-center percentProtein">Percent Protein</th>
+                                <th class="align-center palletSize">Pallet Size</th>
+                                <th class="align-right palletPrice">Pallet Price</th>
+                                <th class="align-right nonpalletPrice">Price</th>
+                                <th class="align-center product-quantity">Quantity</th>
+                                <th class="align-center orderRequirements">Order Requirements</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template for:each={category.products} for:item="product">
+                                <tr key={product.product.Id}>
+                                    <td>{product.product.Name}</td>
+                                    <td class="align-center percentProtein">{product.product.Percent_Protein__c}</td>
+                                    <td class="align-center palletSize">{product.product.Pallet_Size__c}</td>
+                                    <td class="align-right palletPrice"><lightning-formatted-number value={product.palletPrice} format-style="currency"></lightning-formatted-number></td>
+                                    <td class="align-right nonpalletPrice"><lightning-formatted-number value={product.price} format-style="currency"></lightning-formatted-number></td>
+                                    <td class="align-center product-quantity">
+                                        <lightning-input 
+                                            type="number" 
+                                            name={product.product.Id} 
+                                            value="0" 
+                                            min="0" 
+                                            max="9999" 
+                                            maxlength="4" 
+                                            variant="label-hidden" 
+                                            onblur={handleInputBlur}
+                                            disabled={isCartLocked}></lightning-input>
+                                    </td>
+                                    <td class="align-center orderRequirements">{product.product.Order_Requirements__c}</td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </lightning-accordion-section>
+            </template>
+        </lightning-accordion>
+        <div class="add-to-cart-wrapper">
+            <span if:true={showErrorMessage} class="error-message">{errorMessage}</span>
+            <span if:true={showSuccessMessage} class="success-message">{successMessage}</span>
+            <button type="button" onclick={addToCart} class="slds-button slds-button_brand" disabled={isCartLocked}>Add To Cart</button>
+        </div>
+    </section>
+</article>
+</template>

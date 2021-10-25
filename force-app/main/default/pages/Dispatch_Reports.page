@@ -1,0 +1,12 @@
+<apex:page showHeader="false" sidebar="false"
+lightningStylesheets="true"> <div> 
+<apex:outputLink value="/apex/APXTConga4__Conga_Composer?id={!$User.Id}&QueryId=[Date]a1j0b000002K9Tn,[Order]a1j0b000002K982%3Fpv0%3D,[Tons]a1j0b000002KG8pAAG,&TemplateId=a1r0b000004o07N&DefaultPDF=1&DS7=3" id="orderDispatch2">
+   Sack Orders Dispatch Report Tomorrow</apex:outputLink> <br />   
+      <apex:outputLink value="/apex/APXTConga4__Conga_Composer?id={!$User.Id}&QueryId=[Date]a1j0b000002K9Ti,[Order]a1j0b000002K9Ph%3Fpv0%3D,[Tons]a1j0b000002KGACAA4,&TemplateId=a1r0b000004o07N&DefaultPDF=1&DS7=3" id="orderDispatch3">
+   Sack Orders Dispatch Report Monday</apex:outputLink> <br />          
+       <apex:outputLink value="/apex/APXTConga4__Conga_Composer?id={!$User.Id}&QueryId=[Date]a1j0b000002K9Tn,[Order]a1j0b000002K9Pi%3Fpv0%3D,[Tons]a1j0b000002KG9YAAW,&TemplateId=a1r0b000004o07S&DefaultPDF=1&DS7=3" id="orderDispatch5">
+   Bulk Orders Dispatch Report Tomorrow</apex:outputLink> <br/>   
+       <apex:outputLink value="/apex/APXTConga4__Conga_Composer?id={!$User.Id}&QueryId=[Date]a1j0b000002K9Ti,[Order]a1j0b000002K9QV%3Fpv0%3D,[Tons]a1j0b000002KG9xAAG,&TemplateId=a1r0b000004o07S&DefaultPDF=1&DS7=3" id="orderDispatch6">
+   Bulk Orders Dispatch Report Monday</apex:outputLink>
+</div>
+</apex:page>

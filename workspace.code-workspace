@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"name": "b2b-commerce-on-lightning-quickstart",
+			"path": "b2b-commerce-on-lightning-quickstart"
+		},
+		{
+			"path": "force-app"
+		}
+	],
+	"settings": {}
+}

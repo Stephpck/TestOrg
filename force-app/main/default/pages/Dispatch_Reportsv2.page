@@ -1,0 +1,20 @@
+<apex:page showHeader="false" sidebar="false" docType="html-5.0" standardController="Order_Invoice__c"    
+lightningStylesheets="true"> <div> 
+<apex:form >
+
+  <!-- Dispatch Date: <apex:inputField value="{! Order_Invoice__c.Required_Date__c}" html-placeholder="Report Date" type="date" /><br />-->
+   
+   Dispatch Date: <apex:inputText value="{! Order_Invoice__c.Required_Date__c}" size="10" id="demo" onfocus="DatePicker.pickDate(false, this , false);" /> 
+   <!--Dispatch Date2: <apex:inputField value="{! Order_Invoice__c.Required_Date__c}" id="rptDate" onfocus="DatePicker.pickDate(false, this , false);" /> -->
+</apex:form>
+   
+<apex:outputLink value="/apex/APXTConga4__Conga_Composer?id={!$User.Id}&QueryId=[Date]a1j0b000002K9Tn,[Order]a1j0b000002K982%3Fpv0%3D,[Tons]a1j0b000002KG8pAAG,&TemplateId=a1r0b000004o07N&DefaultPDF=1&DS7=3" id="orderDispatch2">
+   Sack Orders Dispatch Report Tomorrow</apex:outputLink> <br />   
+      <apex:outputLink value="/apex/APXTConga4__Conga_Composer?id={!$User.Id}&QueryId=[Date]a1j0b000002K9Ti,[Order]a1j0b000002K9Ph%3Fpv0%3D,[Tons]a1j0b000002KGACAA4,&TemplateId=a1r0b000004o07N&DefaultPDF=1&DS7=3" id="orderDispatch3">
+   Sack Orders Dispatch Report Monday</apex:outputLink> <br />          
+       <apex:outputLink value="/apex/APXTConga4__Conga_Composer?id={!$User.Id}&QueryId=[Date]a1j0b000002K9Tn,[Order]a1j0b000002K9Pi%3Fpv0%3D,[Tons]a1j0b000002KG9YAAW,&TemplateId=a1r0b000004o07S&DefaultPDF=1&DS7=3" id="orderDispatch5">
+   Bulk Orders Dispatch Report Tomorrow</apex:outputLink> <br/>   
+       <apex:outputLink value="/apex/APXTConga4__Conga_Composer?id={!$User.Id}&QueryId=[Date]a1j0b000002K9Ti,[Order]a1j0b000002K9QV%3Fpv0%3D,[Tons]a1j0b000002KG9xAAG,&TemplateId=a1r0b000004o07S&DefaultPDF=1&DS7=3" id="orderDispatch6">
+   Bulk Orders Dispatch Report Monday</apex:outputLink>
+</div>
+</apex:page>

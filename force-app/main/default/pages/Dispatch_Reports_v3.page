@@ -1,0 +1,56 @@
+<apex:page id="page" language="en" showHeader="false" sidebar="false" lightningStylesheets="true" >
+    <link type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/themes/cupertino/jquery-ui.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.js">
+    </script>
+    <script type="text/javascript" src="https://jquery-ui.googlecode.com/svn/trunk/ui/i18n/jquery.ui.datepicker-en-GB.js">
+    </script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js">
+    </script>
+    <apex:pageBlock id="pageblock1" title="Dispatch Reports">
+        <!--<p>Please select a date and click Sack or Bulk:</p>-->
+        <p>Delivery Date:&nbsp;<input id="startDate" type="textbox" style="width:100px;" onchange="handleChange(this.value)" /></p>
+        <!--<p>End Date:<br /><input id="endDate" type="textbox"/></p>-->
+        <!--$(selector).datepicker({defaultDate: new Date(2009, 1-1, 26)});$(selector).datepicker({defaultDate: '01/26/2009'});$(selector).datepicker({defaultDate: +7});$(selector).datepicker({defaultDate: '+1m -1d'});-->
+        <script type="text/javascript">
+            $(function() {
+                $("#startDate").datepicker(); // You must leave this line
+                $("#startDate").datepicker($.datepicker.regional['en-US']);
+                $("#startDate").datepicker('setDate', '+1d'); // This is optional
+            });
+        </script>
+        <!--<script type="text/javascript">
+            $(function() {
+                $("#endDate").datepicker(); // You must leave this line
+                $("#endDate").datepicker($.datepicker.regional['en-US']);
+                $("#endDate").datepicker('setDate', '+1d'); // This is optional
+            });
+        </script><br />-->
+        <!-- <input type="button" onclick="launchCongaSack()" value="Sack Orders" />&nbsp;&nbsp; 
+        <input type="button" onclick="launchCongaBulk()" value="Bulk Orders" /><br />-->
+        <apex:outputLink value="#" id="orderDispatch1">Sack Orders Dispatch Report</apex:outputLink> <br />
+        <apex:outputLink value="#" id="orderDispatch2">Bulk Orders Dispatch Report</apex:outputLink> <br />
+        <script>
+            function handleChange(value){
+                console.log(value);
+                var sDate = new Date(value);
+                var startDateForQueries = sDate.getFullYear() + "-" + ("0" + (sDate.getMonth() + 1)).slice(-2) + "-" + ("0" + sDate.getDate()).slice(-2);
+                //console.log("Start: " + startDateForQueries);
+                var qs = "/apex/APXTConga4__Conga_Composer?id={!$User.Id}&QueryId=[Date]a1j5a000002ufFO%3Fpv0%3D{StartDateQ},[Order]a1j5a000002ufFJ%3Fpv0%3D{StartDateQ},[Tons]a1j5a000002ufFY%3Fpv0%3D{StartDateQ},&TemplateId=a1r0b000004o07N&DefaultPDF=1&DS7=3";
+                qs = unescape(qs);
+                console.log(qs);
+                // Use these lines if you're passing to Queries
+                qs = qs.replace(/{StartDateQ}/g, startDateForQueries );
+                document.getElementById("page:pageblock1:orderDispatch1").href = qs;
+                
+                qs = "/apex/APXTConga4__Conga_Composer?id={!$User.Id}&QueryId=[Date]a1j5a000002ufFO%3Fpv0%3D{StartDateQ},[Order]a1j5a000002ufH5%3Fpv0%3D{StartDateQ},[Tons]a1j5a000002ufHP%3Fpv0%3D{StartDateQ},&TemplateId=a1r0b000004o07S&DefaultPDF=1&DS7=3";
+                qs = unescape(qs);
+                qs = qs.replace(/{StartDateQ}/g, startDateForQueries );
+                document.getElementById("page:pageblock1:orderDispatch2").href = qs;
+            }
+                    
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            handleChange((tomorrow.getMonth() + 1) + "/" + tomorrow.getDate() + "/" + tomorrow.getFullYear());
+        </script>
+    </apex:pageBlock>
+</apex:page>
